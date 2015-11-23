@@ -7,6 +7,8 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <stdint.h>
+#include <unistd.h>
 #include "lib/HWaccess.h"
 
 using namespace std;
@@ -29,7 +31,7 @@ void setLights(int heightvalue) {
 }
 
 uint16_t getHeight(void) {
-  static const uint16_t baseAddress = 0x300;
+  static const uint16_t baseAddress = 0x320;
   static const uint16_t readLowAddressOffset = 0x2;
   static const uint16_t startConversionAddressOffset = 0x2;
   static const uint16_t readHighAddressOffset = 0x3;
@@ -72,7 +74,9 @@ int main(int argc, char *argv[]) {
 
   while (true) {
     heightValue = getHeight();
+    cout << heightValue << endl;
     setLights(heightValue);
+    usleep(250000);
   }
 
   return EXIT_SUCCESS;
