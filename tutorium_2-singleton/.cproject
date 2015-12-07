@@ -57,8 +57,8 @@
 		<mudflapth value="false"/>
 		<instrumentedFunctionProfiling value="false"/>
 		<type value="1"/>
-		<parallel_build value="false"/>
-		<parallel_build_number value="1"/>
+		<parallel_build value="true"/>
+		<parallel_build_number value="8"/>
 		<active_configurations>
 			<configuration indexing="true" value="_x86_r"/>
 		</active_configurations>
