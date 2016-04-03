@@ -6,13 +6,15 @@
  */
 #include <cstdlib>
 #include <cstdio>
+#include <iostream>
 #include <sys/neutrino.h>
+using namespace std;
 
-int main(int argc, char** argv){    
+int main(int argc, char** argv){
 
     // Message Passing specific Variables
-    int channel;  
-    int connection; 
+    int channel;
+    int connection;
     struct _pulse     pulse;
 
     // Timer specific Variables
@@ -37,10 +39,10 @@ int main(int argc, char** argv){
     }
 
     // Configure Timer to send every two seconds.
-    timerSpec.it_value.tv_sec = 2;      
+    timerSpec.it_value.tv_sec = 2;
     timerSpec.it_value.tv_nsec = 0;
     timerSpec.it_interval.tv_sec = 2;
-    timerSpec.it_interval.tv_nsec = 0;   
+    timerSpec.it_interval.tv_nsec = 0;
     timer_settime (timerId, 0, &timerSpec, NULL);
 
     // Loop started by timer.

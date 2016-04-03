@@ -10,6 +10,7 @@
 
 #include "Transitions.h"
 #include <cstdio>
+#include <iostream>
 using namespace std;
 
 #define MAXLISTENERS 5

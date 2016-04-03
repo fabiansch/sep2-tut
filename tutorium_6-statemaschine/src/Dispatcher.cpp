@@ -2,7 +2,7 @@
  * @file    Dispatcher.cpp
  * @author  Simon Brummer
  * @desc    Tutorium 6. Zum Singleton erweiterer Dispatcher aus Beispiel 5.
- *          Singleton implementation damit sich die States selbst an 
+ *          Singleton implementation damit sich die States selbst an
  *          EVENTS als Listener heften koennen.
  */
 #ifndef DISPATCHER_CPP_
@@ -10,6 +10,7 @@
 
 #include "Transitions.h"
 #include <cstdio>
+#include <iostream>
 using namespace std;
 
 #define MAXLISTENERS 5
@@ -87,15 +88,3 @@ public:
 };
 
 #endif
-
-
-
-
-
-
-
-
-
-
-
-
