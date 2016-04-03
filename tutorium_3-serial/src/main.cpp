@@ -8,12 +8,14 @@
  *          Der Empfaenger darf nicht #SENDER definiert haben.
  */
 
+#include <iostream>
 #include <stdint.h>
 #include <fcntl.h>
 #include <termios.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+using namespace std;
 
 // Begin of .h-File
 typedef struct {
@@ -99,28 +101,18 @@ int main() {
     #define SENDER
 	#ifdef SENDER
 		ser.sendPacket(&p);
-		printf("Ping: %d\n",p.data);
+		cout << "Ping: " << p.data << endl;
 	#endif
 
 	// Empfangs und Sendeschleife
 	while(p.data < 10){
 		ser.recvPacket(&p);
-		printf("Pong: %d\n",p.data);
+		cout << "Pong: " << p.data << endl;
 
 		p.data += 1;
 
 		ser.sendPacket(&p);
-		printf("Ping: %d\n",p.data);
+		cout << "Ping: " << p.data << endl;
 		usleep(1000000);
 	}
 }
-
-
-
-
-
-
-
-
-
-

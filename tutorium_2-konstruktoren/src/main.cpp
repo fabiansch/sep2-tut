@@ -25,24 +25,24 @@ public:
 // Constructor
 Obj::Obj() {
 	this->pName_ = new string("NO_NAME");
-	printf("Name: %s, Func: Obj()\n", this->pName_->c_str());
+	cout << "Name: " << this->pName_->c_str() << ", Func: Obj()" << endl;
 };
 
 // Constructor with Parameter
 Obj::Obj(string name){
 	this->pName_ = new string(name);
-	printf("Name: %s, Func: Obj(string name)\n", this->pName_->c_str());
+	cout << "Name: " << this->pName_->c_str() << ", Func: Obj(string name)" << endl;
 };
 
 // Copy Constructor
 Obj::Obj(const Obj& other){
 	this->pName_ = new string( *(other.pName_) );
-	printf("Name: %s, Func: Obj(const Obj& other)\n", this->pName_->c_str());
+	cout << "Name: " << this->pName_->c_str() <<", Func: Obj(const Obj& other)" << endl;
 };
 
 // Assignment Operator
 Obj& Obj::operator=(const Obj& other){
-	printf("Name: %s, Func: operator=(const Obj& other)\n", this->pName_->c_str());
+	cout << "Name: " << this->pName_->c_str() << ", Func: operator=(const Obj& other)" << endl;
 	if(this != &other){
 		delete this->pName_;
 		this->pName_ = new string( *(other.pName_) );
@@ -52,7 +52,7 @@ Obj& Obj::operator=(const Obj& other){
 
 // Destructor
 Obj::~Obj(){
-	printf("Name: %s, Func: ~Obj()\n", this->pName_->c_str());
+	cout << "Name: " << this->pName_->c_str() << ", Func: ~Obj()" << endl;
 	delete this->pName_;
 };
 
@@ -84,14 +84,3 @@ int main(void) {
 	//call_by_ref(no_name);
 	return 0;
 }
-
-
-
-
-
-
-
-
-
-
-

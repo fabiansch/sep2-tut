@@ -9,6 +9,7 @@
 #define STATE_CPP_
 
 #include "Transitions.h"
+#include <iostream>
 #include <cstdio>
 #include <string>
 using namespace std;
@@ -25,13 +26,13 @@ public:
 		cout << "~State()" << endl;
 	}
     virtual void Transition1(void){
-    	printf("State=%s Method=Transition1\n", name_.c_str());
+    	cout << "State=" << name_.c_str() << " Method=Transition1" << endl;
     }
     virtual void Transition2(void){
-    	printf("State=%s Method=Transition2\n", name_.c_str());
+    	cout << "State=" << name_.c_str() << " Method=Transition2" << endl;
     }
     virtual void Transition3(void){
-    	printf("State=%s Method=Transition3\n", name_.c_str());
+    	cout << "State=" << name_.c_str() << " Method=Transition3" << endl;
     }
 };
 
