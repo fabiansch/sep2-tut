@@ -24,7 +24,7 @@ int main() {
 	disp->addListener(s2, TRANSITION1);
 
 	// Event TRANSITION1 happens
-	printf("---- TRANSITION1 happens ----\n");
+	cout << "---- TRANSITION1 happens ----" << endl;
 	disp->callListeners(TRANSITION1);
 
 	// Register s1 as Listener on Event TRANSITION2 and s2 on EVENT TRANSITION3
@@ -32,22 +32,22 @@ int main() {
 	disp->addListener(s2, TRANSITION3);
 
 	// Event TRANSITION1 happens
-	printf("---- TRANSITION1 happens ----\n");
+	cout << "---- TRANSITION1 happens ----" << endl;
 	disp->callListeners(TRANSITION1);
 
 	// Event TRANSITION2 happens
-	printf("---- TRANSITION2 happens ----\n");
+	cout << "---- TRANSITION2 happens ----" << endl;
 	disp->callListeners(TRANSITION2);
 
 	// Event TRANSITION3 happens
-	printf("---- TRANSITION3 happens ----\n");
+	cout << "---- TRANSITION3 happens ----" << endl;
 	disp->callListeners(TRANSITION3);
 
 	// Remove s2 as Listener from TRANSITION1
 	disp->remListener(s2, TRANSITION1);
 
 	// Event TRANSITION1 happens
-	printf("---- TRANSITION1 happens ----\n");
+	cout << "---- TRANSITION1 happens ----" << endl;
 	disp->callListeners(TRANSITION1);
 
 	delete s2;

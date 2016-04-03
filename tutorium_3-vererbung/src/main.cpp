@@ -20,19 +20,19 @@ class Super_Class{
 
   public:
 	Super_Class(): super_int_(0){
-		printf("Super_Class()\n");
+		cout << "Super_Class()" << endl;
 	}
 
 	Super_Class(int i): super_int_(i){
-		printf("Super_Class(int)\n");
+		cout << "Super_Class(int)" << endl;
 	}
 
 	Super_Class(const Super_Class& other): super_int_(other.super_int_){
-		printf("Super_Class(const Super_Class&)\n");
+		cout << "Super_Class(const Super_Class&)" << endl;
 	}
 
 	Super_Class& operator=(const Super_Class& other){
-		printf("Super_Class& operator=(const Super_Class&)\n");
+		cout << "Super_Class& operator=(const Super_Class&)" << endl;
 		if( this != &other){
 			super_int_ = other.super_int_;
 		}
@@ -40,7 +40,7 @@ class Super_Class{
 	}
 
 	virtual ~Super_Class(){
-		printf("~Super_Class()\n");
+		cout << "~Super_Class()" << endl;
 	}
 
 	string to_string_non_virtual(void) const {
@@ -63,23 +63,23 @@ class Base_Class: public Super_Class{
 
   public:
 	Base_Class(): base_int_(0){
-		printf("Base_Class()\n");
+		cout << "Base_Class()" << endl;
 	}
 
 	Base_Class(int super_int): Super_Class(super_int), base_int_(0){
-		printf("Base_Class(int)\n");
+		cout << "Base_Class(int)" << endl;
 	}
 
 	Base_Class(int super_int, int base_int): Super_Class(super_int), base_int_(base_int){
-		printf("Base_Class(int,int)\n");
+		cout << "Base_Class(int,int)" << endl;
 	}
 
 	Base_Class(const Base_Class& other): Super_Class(other), base_int_(other.base_int_) {
-		printf("Base_Class(const Base_Class&)\n");
+		cout << "Base_Class(const Base_Class&)" << endl;
 	}
 
 	Base_Class& operator=(const Base_Class& other){
-		printf("Base_Class& operator=(const Base_Class&)\n");
+		cout << "Base_Class& operator=(const Base_Class&)" << endl;
 		if( this != &other){
 			Super_Class::operator=(other);
 			base_int_ = other.base_int_;
@@ -88,7 +88,7 @@ class Base_Class: public Super_Class{
 	}
 
 	virtual ~Base_Class(){
-		printf("~Base_Class()\n");
+		cout << "~Base_Class()" << endl;
 	}
 
 	string to_string_non_virtual(void) const {
@@ -109,19 +109,19 @@ int main(int argc, char** args){
 	// Hier nur heap allokierte Objekte, da es bei stackallokierten
 	// Objekten keine dynamische Bindung gibt bzw. nicht formulierbar ist.
 
-	printf("Konstruktoren Aufrufe\n");
+	cout << "Konstruktoren Aufrufe" << endl;
 	Super_Class* super = new Super_Class(1);
 	Super_Class* base  = new Base_Class(1,2);
 
-	printf("\n\nVirtuelle Funktionen\n");
+	cout << "\n\nVirtuelle Funktionen" << endl;
 	printf("%s\n", super->to_string_virtual().c_str() );
 	printf("%s\n", base->to_string_virtual().c_str() );
 
-	printf("\n\nNicht - Virtuelle Funktionen\n");
+	cout << "\n\nNicht - Virtuelle Funktionen" << endl;
 	printf("%s\n", super->to_string_non_virtual().c_str() );
 	printf("%s\n", base->to_string_non_virtual().c_str() );
 
-	printf("\n\nDestruktoren Aufrufe\n");
+	cout << "\n\nDestruktoren Aufrufe" << endl;
 	delete base;
 	delete super;
 

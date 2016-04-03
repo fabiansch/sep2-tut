@@ -20,17 +20,17 @@ public:
 };
 
 Inner::Inner(){
-	printf("Inner()\n");
+	cout << "Inner()" << endl;
 }
 Inner::Inner(const Inner& other){
-	printf("Inner(const Inner& other)\n");
+	cout << "Inner(const Inner& other)" << endl;
 }
 Inner& Inner::operator=(const Inner& other){
-	printf("operator(const Inner& other)\n");
+	cout << "operator(const Inner& other)" << endl;
 	return *this;
 }
 Inner::~Inner(){
-	printf("~Inner()\n");
+	cout << "~Inner()" << endl;
 }
 
 
@@ -46,17 +46,17 @@ public:
 };
 
 Outer::Outer(){
-	printf("Outer()\n");
+	cout << "Outer()" << endl;
 	inner = new Inner();
 }
 
 Outer::Outer(const Outer& other){
-	printf("Outer(const Outer& other)\n");
+	cout << "Outer(const Outer& other)" << endl;
 	inner = new Inner( *(other.inner) );
 }
 
 Outer& Outer::operator=(const Outer& other){
-	printf("operator=(const Outer& other)\n");
+	cout << "operator=(const Outer& other)" << endl;
 	if(this != &other){
 		delete inner;
 		inner = new Inner( *(other.inner) ); // Deep Copy
@@ -66,29 +66,29 @@ Outer& Outer::operator=(const Outer& other){
 
 Outer::~Outer(){
 	delete inner;
-	printf("~Outer()\n");
+	cout << "~Outer()" << endl;
 }
 
 // Democode
 void call_by_val(Outer a){
-	printf("call_by_val(Outer a)\n");
+	cout << "call_by_val(Outer a)" << endl;
 }
 
 void call_by_ref(Outer& a){
-	printf("call_by_ref(Outer& a)\n");
+	cout << "call_by_ref(Outer& a)" << endl;
 }
 
 int main() {
 	Outer a;
 	Outer b;
 
-	printf("\n--Before call_by_val(Outer a) \n");
+	cout << "\n--Before call_by_val(Outer a) " << endl;
 	call_by_val(a);
-	printf("\n--Before call_by_ref(Outer& a) \n");
+	cout << "\n--Before call_by_ref(Outer& a) " << endl;
 	call_by_ref(a);
-	printf("\n--Before operator= \n");
+	cout << "\n--Before operator= " << endl;
 	a = b;
-	printf("\n--Before Stack Cleanup\n");
+	cout << "\n--Before Stack Cleanup" << endl;
 
 	return 0;
 }

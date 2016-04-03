@@ -41,15 +41,15 @@ GOFSingleton* GOFSingleton::getInstance(){
 }
 
 GOFSingleton::GOFSingleton(){
-	printf("ctor GOF Singleton\n");
+	cout << "ctor GOF Singleton" << endl;
 }
 
 GOFSingleton::~GOFSingleton(){
-	printf("dtor GOF Singleton\n");
+	cout << "dtor GOF Singleton" << endl;
 }
 
 void GOFSingleton::method(){
-	printf("method called\n");
+	cout << "method called" << endl;
 }
 /* End GOV-Singleton */
 
@@ -75,15 +75,15 @@ MeyersSingleton* MeyersSingleton::getInstance(){
 }
 
 MeyersSingleton::MeyersSingleton(){
-	printf("ctor Meyers Singleton\n");
+	cout << "ctor Meyers Singleton" << endl;
 }
 
 MeyersSingleton::~MeyersSingleton(){
-	printf("dtor Meyers Singleton\n");
+	cout << "dtor Meyers Singleton" << endl;
 }
 
 void MeyersSingleton::method(){
-	printf("method called\n");
+	cout << "method called" << endl;
 }
 /* End Meyers-Singleton */
 
@@ -122,15 +122,15 @@ DCLPSingleton* DCLPSingleton::getInstance(){
 }
 
 DCLPSingleton::DCLPSingleton(){
-	printf("ctor DCLP Singleton\n");
+	cout << "ctor DCLP Singleton" << endl;
 }
 
 DCLPSingleton::~DCLPSingleton(){
-	printf("dtor DCLP Singleton\n");
+	cout << "dtor DCLP Singleton" << endl;
 }
 
 void DCLPSingleton::method(){
-	printf("method called\n");
+	cout << "method called" << endl;
 }
 /* End DCLP Singleton */
 

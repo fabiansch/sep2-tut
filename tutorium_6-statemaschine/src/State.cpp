@@ -21,22 +21,22 @@ protected:
 
 public:
 	State(Context* con): con_(con){
-		printf("State(Context* con)\n");
+		cout << "State(Context* con)" << endl;
 	}
 
 	virtual ~State(){
-		printf("~State()\n");
+		cout << "~State()" << endl;
 	}
 
     virtual void Transition1(void){
-    	printf("State::Transition1\n");
+    	cout << "State::Transition1" << endl;
     }
 
     virtual void Transition2(void){
-    	printf("State::Transition2\n");
+    	cout << "State::Transition2" << endl;
     }
     virtual void Transition3(void){
-    	printf("State::Transition3\n");
+    	cout << "State::Transition3" << endl;
     }
 
 private:

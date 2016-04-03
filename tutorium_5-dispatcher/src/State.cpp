@@ -19,10 +19,10 @@ private:
 
 public:
 	State(string name): name_(name){
-		printf("State(string name)\n");
+		cout << "State(string name)" << endl;
 	}
 	virtual ~State(){
-		printf("~State()\n");
+		cout << "~State()" << endl;
 	}
     virtual void Transition1(void){
     	printf("State=%s Method=Transition1\n", name_.c_str());

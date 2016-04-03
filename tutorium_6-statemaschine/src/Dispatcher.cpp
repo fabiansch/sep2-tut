@@ -62,7 +62,7 @@ public:
 				return;
 			}
 		}
-		printf("Sorry, no Space for Listener at requested Event left\n");
+		cout << "Sorry, no Space for Listener at requested Event left" << endl;
 	}
 
 	virtual void remListeners(Transitions* listener, EVENTS event){

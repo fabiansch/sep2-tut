@@ -46,7 +46,7 @@ int main(int argc, char** argv){
     // Loop started by timer.
     while(1){
         MsgReceivePulse(channel, &pulse, sizeof (pulse), NULL);
-		printf("Timer sent a Message\n");
+		cout << "Timer sent a Message" << endl;
     }
 
     // Cleanup

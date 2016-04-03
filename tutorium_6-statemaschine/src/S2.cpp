@@ -10,7 +10,7 @@
 #include <new>
 
 S2::S2(Context* con): State::State(con){
-	printf("S2()\n");
+	cout << "S2()" << endl;
 
 	// Start listen on Event Transition1 and Event Transmission2
 	Dispatcher* dsp = Dispatcher::getInstance();
@@ -19,11 +19,11 @@ S2::S2(Context* con): State::State(con){
 }
 
 S2::~S2(){
-	printf("~S2()\n");
+	cout << "~S2()" << endl;
 }
 
 void S2::Transition1(void){
-	printf("S2 --T1--> S1\n");
+	cout << "S2 --T1--> S1" << endl;
 
 	// Stop listen to Event Transmission1 and Event Transmission2
 	Dispatcher* dsp = Dispatcher::getInstance();
@@ -35,7 +35,7 @@ void S2::Transition1(void){
 }
 
 void S2::Transition2(void){
-	printf("S2 --T2--> S2\n");
+	cout << "S2 --T2--> S2" << endl;
 }
 
 

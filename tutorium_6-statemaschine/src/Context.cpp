@@ -19,11 +19,11 @@ private:
 
 public:
 	Context(): state_(NULL){
-		printf("Context()\n");
+		cout << "Context()" << endl;
 	}
 
 	virtual ~Context(){
-		printf("~Context()\n");
+		cout << "~Context()" << endl;
 
 		// On cleanup: Remove yourself from all Events
 		Dispatcher* dsp = Dispatcher::getInstance();

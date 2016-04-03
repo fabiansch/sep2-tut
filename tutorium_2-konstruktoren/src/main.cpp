@@ -60,12 +60,12 @@ Obj::~Obj(){
 /* Demo Code */
 // Call by Value: Copy Constructor is called.
 void call_by_val(Obj obj){
-	printf("Func: call_by_val(Obj obj)\n");
+	cout << "Func: call_by_val(Obj obj)" << endl;
 }
 
 // Call by Reference: No Constructor is called
 void call_by_ref(Obj& obj){
-	printf("Func: call_by_ref(Obj& obj)\n");
+	cout << "Func: call_by_ref(Obj& obj)" << endl;
 }
 
 int main(void) {
