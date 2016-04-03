@@ -6,7 +6,6 @@
  *          Aufrufen der Methoden einer Superklasse(wg. moeglicher Mehrfachvererbung)
  */
 
-#include <stdio.h>
 #include <iostream>
 #include <sstream>
 #include <string>

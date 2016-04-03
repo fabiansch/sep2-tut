@@ -5,7 +5,6 @@
 //               Difference Call by Value and Call by Reference
 //============================================================================
 #include <iostream>
-#include <stdio.h>
 using namespace std;
 
 /* Declaration: This goes into usually .h-File */

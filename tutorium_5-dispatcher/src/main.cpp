@@ -5,7 +5,6 @@
  *          States koennen sich am Dispatcher fuer ein bestimmtes Event registrieren.
  *          Tritt dieses Event ein, wird die zugehoerige Methode des States aufgerufen.
  */
-#include <cstdio>
 #include <string>
 
 #include "Transitions.h"
@@ -56,5 +55,3 @@ int main() {
 
 	return 0;
 }
-
-

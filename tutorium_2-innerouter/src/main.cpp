@@ -7,7 +7,6 @@
  */
 
 #include <iostream>
-#include <stdio.h>
 using namespace std;
 
 /* Usually in .h-File */

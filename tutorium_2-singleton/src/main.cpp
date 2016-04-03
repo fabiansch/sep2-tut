@@ -9,8 +9,6 @@
  */
 
 #include <iostream>
-#include <stdio.h>
-#include <pthread.h>
 using namespace std;
 
 /* Begin GOVSingleton */
