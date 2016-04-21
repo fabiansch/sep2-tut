@@ -24,24 +24,24 @@ public:
 // Constructor
 Obj::Obj() {
 	this->pName_ = new string("NO_NAME");
-	cout << "Name: " << this->pName_->c_str() << ", Func: Obj()" << endl;
+	cout << "Name: " << *this->pName_ << ", Func: Obj()" << endl;
 };
 
 // Constructor with Parameter
 Obj::Obj(string name){
 	this->pName_ = new string(name);
-	cout << "Name: " << this->pName_->c_str() << ", Func: Obj(string name)" << endl;
+	cout << "Name: " << *this->pName_ << ", Func: Obj(string name)" << endl;
 };
 
 // Copy Constructor
 Obj::Obj(const Obj& other){
 	this->pName_ = new string( *(other.pName_) );
-	cout << "Name: " << this->pName_->c_str() <<", Func: Obj(const Obj& other)" << endl;
+	cout << "Name: " << *this->pName_ <<", Func: Obj(const Obj& other)" << endl;
 };
 
 // Assignment Operator
 Obj& Obj::operator=(const Obj& other){
-	cout << "Name: " << this->pName_->c_str() << ", Func: operator=(const Obj& other)" << endl;
+	cout << "Name: " << *this->pName_ << ", Func: operator=(const Obj& other)" << endl;
 	if(this != &other){
 		delete this->pName_;
 		this->pName_ = new string( *(other.pName_) );
@@ -51,7 +51,7 @@ Obj& Obj::operator=(const Obj& other){
 
 // Destructor
 Obj::~Obj(){
-	cout << "Name: " << this->pName_->c_str() << ", Func: ~Obj()" << endl;
+	cout << "Name: " << *this->pName_ << ", Func: ~Obj()" << endl;
 	delete this->pName_;
 };
 

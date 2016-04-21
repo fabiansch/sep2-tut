@@ -113,12 +113,12 @@ int main(int argc, char** args){
 	Super_Class* base  = new Base_Class(1,2);
 
 	cout << "\n\nVirtuelle Funktionen" << endl;
-	cout << super->to_string_virtual().c_str() << endl;
-	cout << base->to_string_virtual().c_str() << endl;
+	cout << super->to_string_virtual() << endl;
+	cout << base->to_string_virtual() << endl;
 
 	cout << "\n\nNicht - Virtuelle Funktionen" << endl;
-	cout << super->to_string_non_virtual().c_str() << endl;
-	cout << base->to_string_non_virtual().c_str() << endl;
+	cout << super->to_string_non_virtual() << endl;
+	cout << base->to_string_non_virtual() << endl;
 
 	cout << "\n\nDestruktoren Aufrufe" << endl;
 	delete base;

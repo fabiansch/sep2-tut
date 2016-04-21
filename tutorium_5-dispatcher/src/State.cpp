@@ -24,15 +24,15 @@ public:
 	virtual ~State(){
 		cout << "~State()" << endl;
 	}
-    virtual void Transition1(void){
-    	cout << "State=" << name_.c_str() << " Method=Transition1" << endl;
-    }
-    virtual void Transition2(void){
-    	cout << "State=" << name_.c_str() << " Method=Transition2" << endl;
-    }
-    virtual void Transition3(void){
-    	cout << "State=" << name_.c_str() << " Method=Transition3" << endl;
-    }
+		virtual void Transition1(void){
+			cout << "State=" << name_ << " Method=Transition1" << endl;
+		}
+		virtual void Transition2(void){
+			cout << "State=" << name_ << " Method=Transition2" << endl;
+		}
+		virtual void Transition3(void){
+			cout << "State=" << name_ << " Method=Transition3" << endl;
+		}
 };
 
 #endif /* STATE_H_ */
