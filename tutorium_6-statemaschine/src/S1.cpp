@@ -10,11 +10,11 @@
 #include <new>
 
 S1::S1(Context* con): State::State(con){
-    cout << "S1()" << endl;
+	cout << "S1()" << endl;
 
 	// Start listen on Event Transition1
 	Dispatcher* dsp = Dispatcher::getInstance();
-	dsp->addListeners( this->con_, TRANSITION1);
+	dsp->addListener( this->con_, TRANSITION1);
 }
 
 S1::~S1(){
@@ -31,5 +31,3 @@ void S1::Transition1(void){
 	// Move to State S2.
 	new (this) S2(this->con_);
 }
-
-

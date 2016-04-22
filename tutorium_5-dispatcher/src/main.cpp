@@ -43,7 +43,7 @@ int main() {
 	disp->callListeners(TRANSITION3);
 
 	// Remove s2 as Listener from TRANSITION1
-	disp->remListener(s2, TRANSITION1);
+	disp->remListeners(s2, TRANSITION1);
 
 	// Event TRANSITION1 happens
 	cout << "---- TRANSITION1 happens ----" << endl;

@@ -14,8 +14,8 @@ S2::S2(Context* con): State::State(con){
 
 	// Start listen on Event Transition1 and Event Transmission2
 	Dispatcher* dsp = Dispatcher::getInstance();
-	dsp->addListeners( this->con_, TRANSITION1);
-	dsp->addListeners( this->con_, TRANSITION2);
+	dsp->addListener( this->con_, TRANSITION1);
+	dsp->addListener( this->con_, TRANSITION2);
 }
 
 S2::~S2(){
@@ -37,15 +37,3 @@ void S2::Transition1(void){
 void S2::Transition2(void){
 	cout << "S2 --T2--> S2" << endl;
 }
-
-
-
-
-
-
-
-
-
-
-
-
