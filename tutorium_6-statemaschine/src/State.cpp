@@ -2,8 +2,8 @@
  * @file    State.cpp
  * @author  Simon Brummer
  * @desc    Tutorium 6. State ist DIE Oberklasse der Statemaschine.
- *          Sie implementiert alle Methoden des "Transitions" Interfaces. 
- *          Diese Methoden sind die Transitionen der Statemaschine und 
+ *          Sie implementiert alle Methoden des "Transitions" Interfaces.
+ *          Diese Methoden sind die Transitionen der Statemaschine und
  *          koennen Zustandsuebergaengen fuehren.
  */
 #ifndef STATE_CPP_
@@ -28,29 +28,20 @@ public:
 		cout << "~State()" << endl;
 	}
 
-    virtual void Transition1(void){
-    	cout << "State::Transition1" << endl;
-    }
+		virtual void Transition1(void){
+			cout << "State::Transition1" << endl;
+		}
 
-    virtual void Transition2(void){
-    	cout << "State::Transition2" << endl;
-    }
-    virtual void Transition3(void){
-    	cout << "State::Transition3" << endl;
-    }
+		virtual void Transition2(void){
+			cout << "State::Transition2" << endl;
+		}
+		virtual void Transition3(void){
+			cout << "State::Transition3" << endl;
+		}
 
 private:
-    State(const State& other);
-    State& operator=(const State& other);
+		State(const State& other);
+		State& operator=(const State& other);
 };
 
 #endif /* STATE_H_ */
-
-
-
-
-
-
-
-
-

@@ -10,74 +10,55 @@
 
 #include "Transitions.h"
 #include <iostream>
+#include <vector>
 using namespace std;
 
-#define MAXLISTENERS 5
-
 // Events in the System. Each EVENT needs a corresponding Method in class Transactions
-enum EVENTS{TRANSITION1,TRANSITION2,TRANSITION3,NEVENTS};
+enum EVENTS { TRANSITION1, TRANSITION2, TRANSITION3, NEVENTS };
 
 // typedef: Method from Class "Transitions"
 typedef void (Transitions::*method_t)(void);
 
-class Dispatcher{
+class Dispatcher {
 private:
 	method_t methods[NEVENTS];
-	Transitions* listeners_[NEVENTS][MAXLISTENERS];
+	vector<Transitions *> listeners_[NEVENTS];
 
 public:
-	Dispatcher(){
-		// Clear Listener Pointer 2Dim Array
-		for(int i=0; i<NEVENTS; i++){
-			for(int j=0; j<MAXLISTENERS; j++){
-				listeners_[i][j] = NULL;
-			}
-		}
-
+	Dispatcher() {
 		// Add Method pointer to Call Method Array
 		methods[TRANSITION1] = &Transitions::Transition1;
 		methods[TRANSITION2] = &Transitions::Transition2;
 		methods[TRANSITION3] = &Transitions::Transition3;
 	}
 
-	virtual ~Dispatcher(){}
+	virtual ~Dispatcher() {}
 
-	virtual void addListener(Transitions* listener, EVENTS event){
+	virtual void addListener(Transitions *listener, EVENTS event) {
 		// Add Listener to be called on a specific Event
-		for(int i=0; i<MAXLISTENERS; i++){
-			if( listeners_[event][i] == NULL || listeners_[event][i] == listener){
-				listeners_[event][i] = listener;
-				return;
-			}
-		}
-		cout << "Sorry, no Space for Listener at requested Event left" << endl;
+		listeners_[event].push_back(listener);
 	}
 
-	virtual void remListener(Transitions* listener, EVENTS event){
+	virtual void remListeners(Transitions *listener, EVENTS event) {
 		// Remove Listener from a specific Event
-		for(int i=0; i<MAXLISTENERS; i++){
-			if( listeners_[event][i] == listener){
-				listeners_[event][i] = NULL;
-				return;
+		for (unsigned i = 0; i < listeners_[event].size(); ++i) {
+			if (listeners_[event][i] == listener){
+				listeners_[event].erase(listeners_[event].begin() + i);
 			}
 		}
-		cout << "Sorry, couldn't find Listener at requested Event" << endl;
 	}
 
-	virtual void callListeners(EVENTS event){
+	virtual void callListeners(EVENTS event) {
 		// Call for every registered Listener
 		// the Method that corresponds with event.
-		for(int i=0; i<MAXLISTENERS; i++){
-			if( listeners_[event][i] != NULL){
-				(listeners_[event][i]->*methods[event])();
-			}
+		for (unsigned i = 0; i < listeners_[event].size(); ++i) {
+			(listeners_[event][i]->*methods[event])();
 		}
 	}
 
-
 private:
-	Dispatcher(const Dispatcher& other);
-	Dispatcher& operator=(const Dispatcher& other);
+	Dispatcher(const Dispatcher &other);
+	Dispatcher &operator=(const Dispatcher &other);
 };
 
 #endif
