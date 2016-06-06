@@ -13,7 +13,6 @@
  */
 
 #include <unistd.h>
-#include <time.h>
 #include "Blink_Thread.h"
 #include "lib/Lock.h"
 #include "lib/HWaccess.h"
