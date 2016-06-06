@@ -40,14 +40,14 @@ uint16_t getHeight(void) {
 
   uint16_t height;
 
-  //read low bytes
-  height = in8(baseAddress + readLowAddressOffset);
-
   // write opcode to start conversion
   out8(baseAddress + startConversionAddressOffset, startConversionOpCode);
 
   //wait for conversion to complete
   usleep(10);
+
+  //read low bytes
+  height = in8(baseAddress + readLowAddressOffset);
 
   //read high bytes
   height |= (uint16_t)in8(baseAddress + readHighAddressOffset) << 8;
