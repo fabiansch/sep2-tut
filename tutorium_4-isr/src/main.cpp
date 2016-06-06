@@ -23,8 +23,6 @@ const struct sigevent* ISR_DIO(void* arg, int id) {
     struct sigevent* event = (struct sigevent*) arg;
     out8(0x30F, 0);
 
-    event->sigev_notify = SIGEV_PULSE ;
-    event->__sigev_un1.__sigev_coid = isrConnection;
     event->__sigev_un2.__st.__sigev_code = 0;
     event->sigev_value.sival_int = 1;
     return event;
@@ -70,11 +68,11 @@ int main() {
     registerISR();
 
     struct _pulse pulse;
-    
+
     // Wait for Pulse Message
     do{
         MsgReceivePulse(isrChannel,&pulse,sizeof(pulse),NULL);
-        
+
         // Print received Pulse message Value
         cout << "Got an Interrupt, value: " << pulse.value.sival_int << endl;
     }while(1);

@@ -4,12 +4,12 @@
  * @version 0.1
  *
  * Demoklasse fuer das SEP2 Tutorium. Es wird folgendes gezeigt:
- * - Grundlegende Syntax von C++. Variablen und Methodendeklaration 
+ * - Grundlegende Syntax von C++. Variablen und Methodendeklaration
  *   sowie statische Methoden.
  * - Implementierung des HAW-Threads
  * - Einsatz des "scoped locking"-Pattern. Lock in Blink_Thread::execute
  * - Grundlegende initialisierung und Ansteuerung der Hardware
- * - Kommentierung in einem Format mit das Doxygen parsen kann. 
+ * - Kommentierung in einem Format mit das Doxygen parsen kann.
  */
 
 #include <unistd.h>
@@ -24,17 +24,18 @@ pthread_mutex_t Blink_Thread::mtx_ = PTHREAD_MUTEX_INITIALIZER;
 /**
  *  Standard Konstruktor.
  *  Genauer beschreibender Text für Doxygen...
- *  @param times bestimmt wie oft das gruene Licht blinken soll. 
+ *  @param times bestimmt wie oft das gruene Licht blinken soll.
  */
 Blink_Thread::Blink_Thread(uint16_t times): times_(times) {
     /* Einfacher Konstruktor, setzt die Werte der Instanzvariablen.
-     * Methode bei Times ist vorzuziehen. Direktes kopieren bei 
-     * Objekterzeugung, gilt nicht als Zuweisung und verstösst 
+     * Methode bei Times ist vorzuziehen. Direktes kopieren bei
+     * Objekterzeugung, gilt nicht als Zuweisung und verstösst
      * damit auch nicht gegen die const correctness siehe Blink_Thread.h .
      */
-  
+
     cout << "ctor: Blink_Thread" << endl;
 
+    // DIO Controller, Basisadresse steht auf dem Geme Rechner (Aufkleber)
     ioControlAddress_ = 0x303;
     registerAddress_  = 0x300;
 
@@ -46,9 +47,9 @@ Blink_Thread::Blink_Thread(uint16_t times): times_(times) {
 /**
  * Standard Dekonstruktor.
  * Wird aufgerufen beim loeschen des Objektes.
- * Objekte die im lokalen Kontext von Methoden allogiert wurden, werden 
+ * Objekte die im lokalen Kontext von Methoden allogiert wurden, werden
  * beim Bereinigen des Stacks, bei Methodenende automatisch deallokiert.
- * --> Automatischer Dekonstruktoraufruf.  
+ * --> Automatischer Dekonstruktoraufruf.
  */
 Blink_Thread::~Blink_Thread() {
     cout << "dtor: Blink_Thread" << endl;
@@ -57,8 +58,8 @@ Blink_Thread::~Blink_Thread() {
 
 /**
  * Hauptschleife des geerbten HAW-Thread.
- * Die oberklasse HAW-Thread erzwingt die Implementierung der execute Methode.  
- * Der Thread endet nach Ende dieser Methode. 
+ * Die oberklasse HAW-Thread erzwingt die Implementierung der execute Methode.
+ * Der Thread endet nach Ende dieser Methode.
  */
 void Blink_Thread::execute(void*){
     /* Klassenweiten Mutex, locken. */
@@ -69,27 +70,27 @@ void Blink_Thread::execute(void*){
     if( ThreadCtl(_NTO_TCTL_IO_PRIV,0) == -1 ){
         cout << "Can't get Hardware access, therefore can't do anything." << endl;
     }
-    
+
     /* IO Register als Eingänge bzw. Ausgänge definieren. */
     out8(ioControlAddress_, ioControlBitmask_);
 
     /* Gruenes Licht blinken lassen inkl. Pruefung ob der Thread extern gestoppt wurde. */
     for(int i = 0; i < times_; i++){
         /* Pruefen ob der Thread durch stop() beendet wurde. */
-        if( !isStopped() ){ 
+        if( !isStopped() ){
             turnGreenOn();
             usleep(500000);
             turnGreenOff();
             usleep(500000);
-	}
+        }
     }
 }
 
 
 /**
- * Shutdown Methode. 
- * Diese Methode muss beim erben von HAW-Thread implementiert werden. 
- * Sie wird nach Ende der execute-Methode aufgerufen und dient dem 
+ * Shutdown Methode.
+ * Diese Methode muss beim erben von HAW-Thread implementiert werden.
+ * Sie wird nach Ende der execute-Methode aufgerufen und dient dem
  * evtl. aufraumen das Threadablauf.
  */
 void Blink_Thread::shutdown(){
@@ -99,7 +100,7 @@ void Blink_Thread::shutdown(){
 
 /**
  * Schaltet gruenes Ampellicht ein.
- * @return liefert immer 0 zurueck. 
+ * @return liefert immer 0 zurueck.
  */
 uint8_t Blink_Thread::turnGreenOn() const {
     cout << "Turning green light on." << endl;
@@ -111,7 +112,7 @@ uint8_t Blink_Thread::turnGreenOn() const {
 
 /**
  * Schaltet gruenes Ampellicht ein.
- * @return liefert immer 0 zurueck. 
+ * @return liefert immer 0 zurueck.
  */
 uint8_t Blink_Thread::turnGreenOff() const {
     cout << "Turning green light off." << endl;
