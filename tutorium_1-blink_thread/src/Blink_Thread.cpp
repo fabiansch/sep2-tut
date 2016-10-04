@@ -38,8 +38,10 @@ Blink_Thread::Blink_Thread(uint16_t times): times_(times) {
     ioControlAddress_ = 0x303;
     registerAddress_  = 0x300;
 
-    ioControlBitmask_  = 0b10001010;
-    greenLightBitmask_ = 0b00100000;
+    ioControlBitmask_  = 	0b10001010; //Datenblatt DIO Controller Adr. = 300h
+    greenLightBitmask_ = 	0b00100000;
+    orangeLightBitmask_ = 	0b01000000;
+    redLightBitmask_ = 		0b10000000;
 }
 
 
@@ -81,6 +83,16 @@ void Blink_Thread::execute(void*){
             usleep(500000);
             turnGreenOff();
             usleep(500000);
+
+            turnOrangeOn();
+			usleep(500000);
+			turnOrangeOff();
+			usleep(500000);
+
+			turnRedOn();
+			usleep(500000);
+			turnRedOff();
+			usleep(500000);
         }
     }
 }
@@ -117,5 +129,51 @@ uint8_t Blink_Thread::turnGreenOff() const {
     cout << "Turning green light off." << endl;
     /* Bit fuer gruenes Licht loeschen. */
     out8(registerAddress_, in8(registerAddress_) & ~greenLightBitmask_);
+    return 0;
+}
+
+/**
+ * Schaltet orangenes Ampellicht ein.
+ * @return liefert immer 0 zurueck.
+ */
+uint8_t Blink_Thread::turnOrangeOn() const {
+    cout << "Turning orange light on." << endl;
+    /* Bit fuer orange Licht setzen. */
+    out8(registerAddress_, in8(registerAddress_) | orangeLightBitmask_);
+    return 0;
+}
+
+
+/**
+ * Schaltet orangenes Ampellicht ein.
+ * @return liefert immer 0 zurueck.
+ */
+uint8_t Blink_Thread::turnOrangeOff() const {
+    cout << "Turning orange light off." << endl;
+    /* Bit fuer orangenes Licht loeschen. */
+    out8(registerAddress_, in8(registerAddress_) & ~orangeLightBitmask_);
+    return 0;
+}
+
+/**
+ * Schaltet rotes Ampellicht ein.
+ * @return liefert immer 0 zurueck.
+ */
+uint8_t Blink_Thread::turnRedOn() const {
+    cout << "Turning red light on." << endl;
+    /* Bit fuer rotes Licht setzen. */
+    out8(registerAddress_, in8(registerAddress_) | redLightBitmask_);
+    return 0;
+}
+
+
+/**
+ * Schaltet rotes Ampellicht ein.
+ * @return liefert immer 0 zurueck.
+ */
+uint8_t Blink_Thread::turnRedOff() const {
+    cout << "Turning red light off." << endl;
+    /* Bit fuer rotes Licht loeschen. */
+    out8(registerAddress_, in8(registerAddress_) & ~redLightBitmask_);
     return 0;
 }
